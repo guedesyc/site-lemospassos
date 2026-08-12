@@ -252,7 +252,8 @@ body {
 
 .home-nav {
   display: flex;
-  gap: clamp(22px, 3.2vw, 60px);
+  align-items: center;
+  gap: clamp(14px, 2.4vw, 46px);
   margin-left: 8vw;
 }
 
@@ -272,6 +273,20 @@ body {
 .home-nav a:hover {
   color: var(--brand-blue);
   opacity: 1;
+}
+
+.home-nav .employee-access {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  opacity: 0.86;
+  padding: 9px 14px;
+  white-space: nowrap;
+}
+
+.home-nav .employee-access:hover {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #fff;
 }
 
 .home-menu {
