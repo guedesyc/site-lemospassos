@@ -1167,6 +1167,8 @@ body {
 
 .solution-detail section {
   max-width: 840px;
+  min-width: 0;
+  width: 100%;
 }
 
 .solution-detail h1 {
@@ -1175,6 +1177,7 @@ body {
   letter-spacing: -0.075em;
   line-height: 0.94;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .solution-detail section > p:not(.eyebrow) {
@@ -1205,6 +1208,51 @@ body {
 }
 
 @media (max-width: 920px) {
+  .fronts-section {
+    display: block;
+    min-height: auto;
+  }
+
+  .fronts-intro {
+    position: static;
+  }
+
+  .fronts-explorer {
+    margin-top: 64px;
+  }
+
+  .group-hero-copy,
+  .group-map-section,
+  .actuation-heading {
+    display: block;
+  }
+
+  .group-lead {
+    margin-top: 36px;
+  }
+
+  .group-map-section {
+    min-height: auto;
+  }
+
+  .map-visual {
+    margin-top: 42px;
+  }
+
+  .group-principles {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 44px;
+  }
+
+  .principle-heading {
+    grid-column: 1 / -1;
+  }
+
+  .actuation-heading h1,
+  .actuation-heading h2 {
+    margin-top: 36px;
+  }
+
   .careers-hero,
   .contact-heading {
     display: block;
@@ -1259,6 +1307,20 @@ body {
   .general-contact {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .solution-detail {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .solution-detail h1 {
+    font-size: clamp(3rem, 15vw, 4.4rem);
+  }
+
+  .solution-detail .eyebrow {
+    flex-wrap: wrap;
+    letter-spacing: 0.1em;
   }
 }
 @media (min-width: 1600px) {
