@@ -6,15 +6,27 @@ function initPageLoader() {
   loader.setAttribute("aria-hidden", "true");
   loader.innerHTML = '<img src="./assets/lemos-passos.png" alt="" />';
   document.body.append(loader);
+  let navigationTimer;
+
+  function hideLoader() {
+    window.clearTimeout(navigationTimer);
+    loader.classList.remove("is-visible");
+  }
 
   window.navigateWithLoader = (href) => {
     if (!href) return;
 
     loader.classList.add("is-visible");
-    window.setTimeout(() => {
+    navigationTimer = window.setTimeout(() => {
       window.location.href = href;
     }, reducedMotion ? 80 : 620);
   };
+
+  window.addEventListener("pageshow", hideLoader);
+  window.addEventListener("popstate", hideLoader);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") hideLoader();
+  });
 
   document.addEventListener("click", (event) => {
     const link = event.target.closest("a[href]");
