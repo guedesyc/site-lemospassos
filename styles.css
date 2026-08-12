@@ -43,6 +43,12 @@ body {
 .page-loader.is-visible {
   opacity: 1;
   transform: scale(1);
+  visibility: visible;
+}
+
+.page-loader[aria-hidden="true"] {
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 .page-loader img {

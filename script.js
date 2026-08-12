@@ -8,21 +8,35 @@ function initPageLoader() {
   document.body.append(loader);
   let navigationTimer;
 
-  function hideLoader() {
-    window.clearTimeout(navigationTimer);
+  function hideLoader({ clearTimer = true } = {}) {
+    if (clearTimer) window.clearTimeout(navigationTimer);
     loader.classList.remove("is-visible");
+    loader.setAttribute("aria-hidden", "true");
+    loader.style.opacity = "0";
+    loader.style.visibility = "hidden";
   }
 
   window.navigateWithLoader = (href) => {
     if (!href) return;
 
+    loader.style.opacity = "";
+    loader.style.visibility = "";
+    loader.setAttribute("aria-hidden", "false");
     loader.classList.add("is-visible");
     navigationTimer = window.setTimeout(() => {
       window.location.href = href;
     }, reducedMotion ? 80 : 620);
   };
 
-  window.addEventListener("pageshow", hideLoader);
+  hideLoader();
+  window.addEventListener("load", () => hideLoader({ clearTimer: false }));
+  window.addEventListener("pagehide", hideLoader);
+  window.addEventListener("beforeunload", hideLoader);
+  window.addEventListener("pageshow", () => {
+    hideLoader();
+    window.requestAnimationFrame(() => hideLoader({ clearTimer: false }));
+    window.setTimeout(() => hideLoader({ clearTimer: false }), 80);
+  });
   window.addEventListener("popstate", hideLoader);
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") hideLoader();
