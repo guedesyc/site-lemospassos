@@ -1,5 +1,39 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+function initPageLoader() {
+  const loader = document.createElement("div");
+  loader.className = "page-loader";
+  loader.setAttribute("aria-hidden", "true");
+  loader.innerHTML = '<img src="./assets/lemos-passos.png" alt="" />';
+  document.body.append(loader);
+
+  window.navigateWithLoader = (href) => {
+    if (!href) return;
+
+    loader.classList.add("is-visible");
+    window.setTimeout(() => {
+      window.location.href = href;
+    }, reducedMotion ? 80 : 620);
+  };
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (link.target === "_blank" || link.hasAttribute("download")) return;
+
+    const url = new URL(link.href, window.location.href);
+    const isExternal = url.origin !== window.location.origin;
+    const isProtocolAction = ["mailto:", "tel:"].includes(url.protocol);
+    const isSamePageHash = url.pathname === window.location.pathname && url.hash;
+
+    if (isExternal || isProtocolAction || isSamePageHash) return;
+
+    event.preventDefault();
+    window.navigateWithLoader(url.href);
+  });
+}
+
 function initIntro() {
   const firstLine = "acima de tudo,";
   const careLeadText = "o ";
@@ -166,7 +200,7 @@ function initFrontsExplorer() {
     });
     item.addEventListener("click", () => {
       const data = frontData[item.dataset.front];
-      if (data) window.location.href = data.href;
+      if (data) window.navigateWithLoader(data.href);
     });
   });
 }
@@ -178,7 +212,7 @@ function initActuationCards() {
   actuationCards.forEach((card) => {
     card.addEventListener("click", () => {
       if (card.dataset.href) {
-        window.location.href = card.dataset.href;
+        window.navigateWithLoader(card.dataset.href);
         return;
       }
 
@@ -272,6 +306,7 @@ function initMailForms() {
   }
 }
 
+initPageLoader();
 initIntro();
 initFrontsExplorer();
 initActuationCards();
