@@ -281,6 +281,15 @@ body {
   opacity: 1;
 }
 
+.home-header .home-nav a,
+.home-header .home-menu {
+  color: #fff;
+}
+
+.home-header .home-menu {
+  border-bottom-color: rgba(255, 255, 255, 0.72);
+}
+
 .home-nav .employee-access {
   border: 1px solid currentColor;
   border-radius: 999px;
@@ -548,6 +557,12 @@ body {
 .front-name {
   font-size: clamp(1.05rem, 1.55vw, 1.5rem);
   font-weight: 700;
+  transition: transform 220ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.front-item:hover .front-name,
+.front-item.is-active .front-name {
+  transform: translateY(-4px);
 }
 
 .front-arrow {
@@ -584,6 +599,12 @@ body {
 .front-preview.is-visible {
   opacity: 1;
   transform: translate(22px, 22px) scale(1) rotate(-3deg);
+}
+
+.front-preview.is-contacts {
+  aspect-ratio: 1.34;
+  height: min(290px, 34vh);
+  width: min(370px, 32vw);
 }
 
 .front-preview img {
@@ -671,20 +692,26 @@ body {
 .group-map-copy h3 { font-size: clamp(2.8rem,5vw,6rem); }
 .group-map-copy > p:not(.eyebrow) { color: rgba(255,255,255,.66); font-size: 1.05rem; line-height: 1.55; margin: 34px 0 42px; max-width: 310px; }
 .map-legend { align-items: center; color: rgba(255,255,255,.58); display: flex; font-size: .72rem; gap: 10px; letter-spacing: .12em; text-transform: uppercase; }
-.map-legend span, .map-point i { background: var(--brand-blue); border-radius: 50%; box-shadow: 0 0 0 6px rgba(107,170,195,.16), 0 0 22px rgba(107,170,195,.9); display: inline-block; height: 8px; width: 8px; }
-.map-visual { align-items: center; display: flex; height: 560px; justify-content: center; perspective: 1100px; position: relative; }
-.map-globe { background: radial-gradient(circle at 34% 28%,rgba(107,170,195,.75),rgba(60,140,172,.42) 19%,rgba(5,45,75,.8) 68%); border: 1px solid rgba(195,204,212,.44); border-radius: 50%; box-shadow: inset -42px -22px 80px rgba(0,0,0,.38), inset 20px 20px 60px rgba(255,255,255,.12), 0 40px 90px rgba(0,0,0,.26); height: min(42vw,510px); max-height: 510px; max-width: 510px; min-height: 330px; min-width: 330px; overflow: hidden; position: relative; transform: rotateX(8deg) rotateY(-16deg); width: min(42vw,510px); }
-.map-globe::after { background: linear-gradient(115deg,rgba(255,255,255,.2),transparent 32%,rgba(0,0,0,.24) 85%); border-radius: 50%; content: ""; inset: 0; pointer-events: none; position: absolute; }
-.globe-lat, .globe-lon { border: 1px solid rgba(195,204,212,.25); border-radius: 50%; left: 10%; position: absolute; right: 10%; }
-.globe-lat-one { height: 28%; top: 36%; } .globe-lat-two { height: 62%; top: 19%; } .globe-lon { bottom: 4%; top: 4%; } .globe-lon-one { left: 31%; right: 31%; } .globe-lon-two { left: 5%; right: 5%; }
-.map-point { align-items: center; display: flex; gap: 9px; position: absolute; white-space: nowrap; z-index: 2; }
-.map-point b { color: rgba(255,255,255,.78); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.point-amapa { left: 57%; top: 27%; } .point-pernambuco { left: 63%; top: 37%; } .point-bahia { left: 61%; top: 49%; } .point-goias { left: 49%; top: 57%; } .point-sao-paulo { left: 47%; top: 69%; } .point-portugal { left: 37%; top: 19%; }
-.point-amazonas { left: 42%; top: 35%; } .point-para { left: 53%; top: 31%; } .point-ceara { left: 71%; top: 34%; }
-.point-df { left: 55%; top: 54%; } .point-mato-grosso { left: 37%; top: 57%; } .point-minas { left: 57%; top: 64%; } .point-panama { left: 22%; top: 29%; }
-.map-orbit { border: 1px solid rgba(107,170,195,.5); border-radius: 50%; height: 78%; position: absolute; transform: rotate(-24deg); width: 78%; }
-.map-orbit-one { animation: orbitDriftOne 18s linear infinite; }
-.map-orbit-two { animation: orbitDriftTwo 24s linear infinite; height: 92%; transform: rotate(54deg); width: 38%; }
+.map-legend span { background: var(--brand-blue); border-radius: 50%; box-shadow: 0 0 0 6px rgba(107,170,195,.16), 0 0 22px rgba(107,170,195,.9); display: inline-block; height: 8px; width: 8px; }
+.map-visual { align-items: center; display: flex; min-height: 560px; justify-content: center; position: relative; }
+.brazil-units-map { align-items: center; display: grid; justify-items: center; max-width: 620px; padding: 0; width: min(100%, 620px); }
+.brazil-units-map img, .brazil-units-map-svg { display: block; height: auto; max-height: 560px; width: min(100%, 500px); }
+.brazil-units-map-svg svg { display: block; height: auto; width: 100%; }
+.brazil-units-map-svg .state-label { display: none; }
+.international-links { margin-top: 12px; width: min(100%, 500px); }
+.international-links svg { display: block; height: auto; overflow: visible; width: 100%; }
+.international-route { fill: none; stroke: url(#internationalRoute); stroke-dasharray: 5 7; stroke-linecap: round; stroke-width: 1.6; }
+.international-node { fill: var(--brand-blue); stroke: var(--brand-deep); stroke-width: 3; }
+.international-node.is-origin { fill: #fff; }
+.international-label { fill: rgba(255,255,255,.82); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-anchor: middle; }
+.origin-label { fill: var(--brand-blue); font-size: 11px; text-transform: uppercase; }
+.regional-land { fill: rgba(255,255,255,.2); stroke: rgba(255,255,255,.62); stroke-width: 1; }
+.regional-active { fill: var(--brand-blue); stroke: #fff; stroke-width: 1; }
+.regional-title { fill: rgba(255,255,255,.72); font-size: 9px; font-weight: 700; letter-spacing: .08em; text-anchor: middle; text-transform: uppercase; }
+.regional-country { fill: #fff; font-size: 9px; font-weight: 700; text-anchor: middle; }
+.map-caption { border-top: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.72); display: grid; gap: 8px; margin-top: clamp(18px,2.5vw,28px); padding-top: 18px; text-align: center; width: min(100%, 500px); }
+.map-caption span { color: rgba(255,255,255,.58); font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.map-caption strong { color: var(--brand-blue); font-size: clamp(.86rem,1.2vw,1rem); letter-spacing: .08em; }
 .group-principles { border-top: 1px solid rgba(255,255,255,.2); display: grid; grid-template-columns: 1.2fr repeat(3,1fr); padding: clamp(60px,7vw,105px) 0 clamp(75px,9vw,130px); }
 .principle-heading { padding-right: 40px; } .principle-heading h3 { font-size: clamp(2.6rem,4vw,5.2rem); }
 .principle-card { border-left: 1px solid rgba(255,255,255,.2); padding: 0 clamp(18px,2.8vw,42px); }
@@ -714,9 +741,11 @@ body {
   .group-stat:last-child { border-bottom: 0; }
   .group-map-section { min-height: auto; padding: 75px 0 60px; }
   .group-map-copy > p:not(.eyebrow) { margin-bottom: 30px; }
-  .map-visual { height: 420px; margin-top: 36px; }
-  .map-globe { height: min(82vw,390px); min-height: 280px; min-width: 280px; width: min(82vw,390px); }
-  .map-point b { font-size: .56rem; }
+  .map-visual { min-height: 420px; margin-top: 36px; }
+  .brazil-units-map { padding: 0; }
+  .brazil-units-map img, .brazil-units-map-svg { max-height: 440px; width: min(100%, 360px); }
+  .international-links { margin-top: 8px; width: min(100%, 360px); }
+  .map-caption strong { line-height: 1.6; }
   .group-principles { display: block; padding: 60px 0 80px; }
   .principle-heading { padding: 0 0 45px; }
   .principle-card { border-left: 0; border-top: 1px solid rgba(255,255,255,.2); padding: 28px 0; }
@@ -840,6 +869,12 @@ body {
     transform: none;
   }
 
+  .front-preview.is-contacts {
+    aspect-ratio: 1.34;
+    height: auto;
+    width: 100%;
+  }
+
   .front-item {
     min-height: 68px;
   }
@@ -893,7 +928,7 @@ body {
 .careers-page {
   background:
     linear-gradient(90deg, rgba(5, 45, 75, 0.94), rgba(5, 45, 75, 0.74) 48%, rgba(5, 45, 75, 0.36)),
-    url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=85") center / cover no-repeat;
+    url("./assets/equipe-lemospassos.jpg") center / cover no-repeat;
   color: #fff;
   min-height: 100svh;
   padding: clamp(80px, 10vw, 150px) clamp(24px, 8vw, 148px);
@@ -1078,7 +1113,9 @@ body {
 }
 
 .contact-page {
-  background: #f4f8f8;
+  background:
+    linear-gradient(90deg, rgba(244, 248, 248, 0.94), rgba(244, 248, 248, 0.82)),
+    url("./assets/contato.jpg") center / cover no-repeat;
   color: var(--brand-deep);
   padding: clamp(82px, 11vw, 160px) clamp(24px, 8vw, 148px) clamp(80px, 10vw, 140px);
 }

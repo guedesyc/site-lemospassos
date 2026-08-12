@@ -118,19 +118,42 @@
             <p>Uma atuação que conecta pessoas, operações e diferentes realidades em todo o Brasil e além dele.</p>
             <div class="map-legend"><span></span> pontos de atuação</div>
           </div>
-          <div class="map-visual" aria-label="Mapa estilizado das regiões de atuação">
-            <div class="map-globe" aria-hidden="true">
-              <span class="globe-lat globe-lat-one"></span><span class="globe-lat globe-lat-two"></span>
-              <span class="globe-lon globe-lon-one"></span><span class="globe-lon globe-lon-two"></span>
-              <span class="map-point point-amapa"><i></i><b>AP</b></span><span class="map-point point-pernambuco"><i></i><b>PE</b></span>
-              <span class="map-point point-bahia"><i></i><b>BA</b></span><span class="map-point point-goias"><i></i><b>GO</b></span>
-              <span class="map-point point-sao-paulo"><i></i><b>SP</b></span><span class="map-point point-portugal"><i></i><b>PT</b></span>
-              <span class="map-point point-amazonas"><i></i><b>AM</b></span><span class="map-point point-para"><i></i><b>PA</b></span>
-              <span class="map-point point-ceara"><i></i><b>CE</b></span><span class="map-point point-df"><i></i><b>DF</b></span>
-              <span class="map-point point-mato-grosso"><i></i><b>MT</b></span><span class="map-point point-minas"><i></i><b>MG</b></span>
-              <span class="map-point point-panama"><i></i><b>PAN</b></span>
+          <div class="map-visual" aria-label="Mapa do Brasil com estados de atuação destacados">
+            <div class="brazil-units-map" data-brazil-map>
+              <img src="./assets/brazil-units-map.svg" alt="Mapa do Brasil com estados de atuação do Grupo LemosPassos destacados em azul" />
+              <div class="international-links" aria-label="Conexões internacionais com Panamá e Portugal">
+                <svg viewBox="0 0 500 220" role="img" aria-label="Brasil conectado ao Panamá e a Portugal">
+                  <defs>
+                    <linearGradient id="internationalRoute" x1="0" x2="1">
+                      <stop offset="0" stop-color="#6baac3" stop-opacity=".35" />
+                      <stop offset="1" stop-color="#6baac3" />
+                    </linearGradient>
+                  </defs>
+                  <path class="international-route" d="M250 20 C215 54 122 62 82 105" />
+                  <path class="international-route" d="M250 20 C285 54 378 62 418 105" />
+                  <circle class="international-node is-origin" cx="250" cy="20" r="6" />
+                  <text class="international-label origin-label" x="250" y="10">Brasil</text>
+                  <g class="regional-map regional-map-central">
+                    <path class="regional-land" d="M38 92 L48 77 L57 75 L65 62 L76 66 L84 58 L96 63 L105 76 L98 88 L89 91 L82 103 L70 99 L61 108 L49 103 Z" />
+                    <path class="regional-active" d="M72 99 L80 91 L89 91 L82 103 Z" />
+                    <circle class="international-node" cx="78" cy="99" r="4" />
+                    <text class="regional-title" x="78" y="132">América Central</text>
+                    <text class="regional-country" x="78" y="148">Panamá</text>
+                  </g>
+                  <g class="regional-map regional-map-europe">
+                    <path class="regional-land" d="M366 78 L357 67 L363 52 L376 55 L383 42 L399 45 L409 34 L427 39 L437 51 L452 57 L461 71 L453 83 L439 80 L430 91 L414 87 L403 98 L390 91 L378 96 Z" />
+                    <path class="regional-active" d="M367 78 L357 67 L363 52 L373 56 L374 68 L370 80 Z" />
+                    <circle class="international-node" cx="367" cy="72" r="4" />
+                    <text class="regional-title" x="415" y="116">Europa</text>
+                    <text class="regional-country" x="367" y="96">Portugal</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="map-caption">
+                <span>Estados destacados em azul</span>
+                <strong>AP · AM · PA · CE · PE · BA · MT · GO · DF · MG · SP</strong>
+              </div>
             </div>
-            <span class="map-orbit map-orbit-one"></span><span class="map-orbit map-orbit-two"></span>
           </div>
         </div>
 

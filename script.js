@@ -154,21 +154,21 @@ function initFrontsExplorer() {
     atuacoes: {
       label: "Atuações",
       index: "02 / 04",
-      image: "./assets/hero-kitchen.png",
+      image: "./assets/card-atuacoes.jpg",
       alt: "Operação alimentícia profissional",
       href: "solucoes.html",
     },
     trabalhe: {
       label: "Trabalhe Conosco",
       index: "03 / 04",
-      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=85",
+      image: "./assets/equipe-lemospassos.jpg",
       alt: "Equipe diversa reunida em ambiente de trabalho",
       href: "trabalhe-conosco.html",
     },
     contatos: {
       label: "Contatos",
       index: "04 / 04",
-      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85",
+      image: "./assets/card-contatos.jpg",
       alt: "Pessoas diversas em reunião",
       href: "contato.html",
     },
@@ -185,6 +185,7 @@ function initFrontsExplorer() {
     });
 
     frontPreview.classList.add("is-changing", "is-visible");
+    frontPreview.classList.toggle("is-contacts", item.dataset.front === "contatos");
     window.setTimeout(() => {
       frontPreviewImage.src = data.image;
       frontPreviewImage.alt = data.alt;
@@ -290,6 +291,28 @@ function initCounters() {
   counterObserver.observe(counters[0].closest(".group-stats"));
 }
 
+function initBrazilMap() {
+  const map = document.querySelector("[data-brazil-map]");
+  const image = map?.querySelector("img");
+  if (!map || !image) return;
+
+  fetch(image.src)
+    .then((response) => {
+      if (!response.ok) throw new Error("Mapa indisponível");
+      return response.text();
+    })
+    .then((svg) => {
+      if (!svg.trim().startsWith("<svg")) return;
+      const holder = document.createElement("div");
+      holder.className = "brazil-units-map-svg";
+      holder.innerHTML = svg;
+      image.replaceWith(holder);
+    })
+    .catch(() => {
+      image.classList.add("is-fallback-visible");
+    });
+}
+
 function initMailForms() {
   const careerForm = document.querySelector("#careerForm");
   const contactForm = document.querySelector("#contactForm");
@@ -337,4 +360,5 @@ initIntro();
 initFrontsExplorer();
 initActuationCards();
 initCounters();
+initBrazilMap();
 initMailForms();
