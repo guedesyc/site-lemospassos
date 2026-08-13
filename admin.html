@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grupo LemosPassos | Admin</title>
+    <link rel="icon" type="image/png" href="./assets/lemos-passos.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell">
+      <section class="admin-login" data-admin-login>
+        <img src="./assets/lemos-passos.png" alt="Grupo LemosPassos" />
+        <p class="eyebrow"><span></span> Área restrita</p>
+        <h1>Painel administrativo</h1>
+        <form data-admin-login-form><label>Usuário<input name="username" autocomplete="username" required /></label><label>Senha<input name="password" type="password" autocomplete="current-password" required /></label><button class="admin-button" type="submit">Entrar ↗</button><p class="admin-error" data-admin-error></p></form>
+      </section>
+      <section class="admin-panel is-hidden" data-admin-panel>
+        <div class="admin-panel-head"><div><p class="eyebrow"><span></span> Conteúdo do site</p><h1>Administração</h1></div><button class="admin-button admin-button-ghost" data-admin-logout>Sair</button></div>
+        <form data-cms-form>
+          <section class="admin-card"><h2>Indicadores da home</h2><div class="admin-grid admin-grid-3"><label>Refeições por dia<input name="meals" type="number" min="0" required /></label><label>Colaboradores<input name="employees" type="number" min="0" required /></label><label>Restaurantes atendidos<input name="restaurants" type="number" min="0" required /></label></div></section>
+          <section class="admin-card"><h2>Empresas por categoria</h2><p class="admin-help">Adicione URLs de imagens ou selecione arquivos. Em um site estático, estas alterações ficam salvas neste navegador.</p><div data-partner-editor></div></section>
+          <section class="admin-card"><h2>Notícias</h2><div data-news-editor></div><button class="admin-button admin-button-ghost" type="button" data-add-news>+ Adicionar notícia</button></section>
+          <button class="admin-button" type="submit">Salvar alterações ↗</button><p class="admin-success" data-admin-success></p>
+        </form>
+      </section>
+    </main>
+    <script src="./admin.js"></script>
+  </body>
+</html>

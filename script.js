@@ -291,6 +291,51 @@ function initCounters() {
   counterObserver.observe(counters[0].closest(".group-stats"));
 }
 
+const CMS_KEY = "lemospassos-cms-v1";
+const cmsDefaults = {
+  metrics: { meals: 400000, employees: 3500, restaurants: 431 },
+  partners: {
+    Hospitalar: ["./assets/hospitalar.jpg", "./assets/equipe-lemospassos.jpg"],
+    Restaurantes: ["./assets/populares.jpg", "./assets/20260225_113909.jpg.jpg"],
+    "Área de Segurança": ["./assets/complexos.jpg", "./assets/facilities.jpg"],
+    "Merenda Escolar": ["./assets/educacional.jpg", "./assets/hotelaria.jpg"],
+  },
+  news: [
+    { title: "Relatório de Transparência e Igualdade Salarial de Mulheres e Homens", excerpt: "Confira o relatório institucional disponibilizado pelo Grupo LemosPassos.", image: "./assets/contato.jpg", url: "https://www.lemospassos.com.br/relatorio-de-transparencia-e-igualdade-salarial-de-mulheres-e-homens/" },
+    { title: "60 anos da Administração", excerpt: "Uma homenagem à história, à ética e à boa gestão que transformam a sociedade.", image: "./assets/card-atuacoes.jpg", url: "https://www.lemospassos.com.br/60-anos-da-administracao/" },
+    { title: "Dia do Cliente", excerpt: "A confiança nasce nos gestos diários e se fortalece em cada etapa da nossa relação.", image: "./assets/card-contatos.jpg", url: "https://www.lemospassos.com.br/dia-do-cliente-2/" },
+    { title: "Dica da Nutri", excerpt: "Um prato colorido mostra a diversidade de nutrientes presentes na refeição.", image: "./assets/populares.jpg", url: "https://www.lemospassos.com.br/dica-da-nutri-2/" },
+  ],
+};
+
+function getCmsData() {
+  try {
+    return { ...cmsDefaults, ...JSON.parse(localStorage.getItem(CMS_KEY) || "{}") };
+  } catch {
+    return cmsDefaults;
+  }
+}
+
+function initCmsContent() {
+  const data = getCmsData();
+  document.querySelectorAll("[data-metric]").forEach((counter) => {
+    if (data.metrics[counter.dataset.metric] != null) counter.dataset.target = data.metrics[counter.dataset.metric];
+  });
+
+  const categoryRoot = document.querySelector("[data-partner-categories]");
+  if (categoryRoot) {
+    categoryRoot.innerHTML = `<div class="clients-title-row"><p class="eyebrow group-eyebrow"><span></span> Empresas que caminham conosco</p><span class="cms-hint">Por categoria</span></div><div class="partner-category-grid">${Object.entries(data.partners).map(([category, images]) => `<section class="partner-category"><h4>${category}</h4><div class="partner-window"><div class="partner-track">${images.filter(Boolean).map((image) => `<img src="${image}" alt="Empresa parceira da categoria ${category}" />`).join("")}</div></div></section>`).join("")}</div>`;
+  }
+
+  const newsRoot = document.querySelector("[data-news-carousel]");
+  if (newsRoot) {
+    newsRoot.innerHTML = data.news.filter((item) => item.title && item.image).map((item) => `<a class="news-card" href="${item.url || "#"}" target="_blank" rel="noopener noreferrer"><img src="${item.image}" alt="" /><span class="news-card-shade"></span><div><small>Notícia</small><h3>${item.title}</h3><p>${item.excerpt || ""}</p></div><b>↗</b></a>`).join("");
+  }
+
+  const newsPage = document.querySelector("[data-news-page]");
+  if (newsPage) newsPage.innerHTML = data.news.filter((item) => item.title && item.image).map((item) => `<a class="news-card" href="${item.url || "#"}" target="_blank" rel="noopener noreferrer"><img src="${item.image}" alt="" /><span class="news-card-shade"></span><div><small>Notícia</small><h2>${item.title}</h2><p>${item.excerpt || ""}</p></div><b>↗</b></a>`).join("");
+}
+
 function initBrazilMap() {
   const map = document.querySelector("[data-brazil-map]");
   const image = map?.querySelector("img");
@@ -359,6 +404,7 @@ initPageLoader();
 initIntro();
 initFrontsExplorer();
 initActuationCards();
+initCmsContent();
 initCounters();
 initBrazilMap();
 initMailForms();
