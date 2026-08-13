@@ -717,7 +717,7 @@ body {
 .principle-card { border-left: 1px solid rgba(255,255,255,.2); padding: 0 clamp(18px,2.8vw,42px); }
 .principle-card > span { color: var(--brand-blue); font-size: .72rem; font-weight: 700; letter-spacing: .12em; }
 .principle-card h4 { font-size: 1.3rem; margin: 45px 0 18px; } .principle-card p { color: rgba(255,255,255,.62); font-size: .95rem; line-height: 1.6; margin: 0; }
-.clients-strip { border-top: 1px solid rgba(255,255,255,.2); padding: clamp(58px,7vw,100px) 0 clamp(72px,9vw,130px); }
+.clients-strip { display: none; }
 .partner-categories { border-top: 1px solid rgba(255,255,255,.2); padding: clamp(58px,7vw,100px) 0 clamp(54px,7vw,90px); }
 .partner-category-grid { display: grid; gap: 20px; grid-template-columns: repeat(4, 1fr); }
 .partner-category { border: 1px solid rgba(255,255,255,.16); min-width: 0; overflow: hidden; padding: 22px; }
@@ -734,9 +734,9 @@ body {
 .news-card img, .news-card-shade { inset: 0; height: 100%; position: absolute; width: 100%; }
 .news-card img { object-fit: cover; transition: transform 500ms ease; }
 .news-card-shade { background: linear-gradient(90deg, rgba(5,45,75,.9), rgba(5,45,75,.12)); }
-.news-card > div { bottom: 28px; left: 28px; max-width: 78%; position: absolute; }
+.news-card > div { bottom: 28px; left: 28px; max-width: calc(100% - 56px); position: absolute; right: 28px; }
 .news-card small { color: var(--brand-blue); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.news-card h3 { font-size: clamp(1.25rem,2.2vw,2.1rem); line-height: 1.05; margin: 10px 0 8px; }
+.news-card h3 { font-size: clamp(1.25rem,2.2vw,2.1rem); line-height: 1.05; margin: 10px 0 8px; overflow-wrap: anywhere; }
 .news-card p { color: rgba(255,255,255,.76); font-size: .9rem; line-height: 1.4; margin: 0; }
 .news-card b { color: var(--brand-blue); font-size: 1.4rem; position: absolute; right: 24px; top: 22px; }
 .news-card:hover img { transform: scale(1.06); }
@@ -1247,7 +1247,9 @@ body {
 .news-feature img { height: min(520px, 48vw); object-fit: cover; width: 100%; }
 .news-feature h2 { font-size: clamp(2rem, 4vw, 4.5rem); letter-spacing: -.06em; line-height: .95; margin: 14px 0 20px; }
 .news-feature p { color: rgba(255,255,255,.7); font-size: 1.05rem; line-height: 1.6; }
-.news-page-grid .news-card h2 { font-size: clamp(1.4rem, 2.4vw, 2.4rem); line-height: 1.05; margin: 10px 0; }
+.news-feature-body { overflow-wrap: anywhere; white-space: pre-line; }
+.news-attachment { border-radius: 4px; display: block; height: 120px; margin: 18px 0; object-fit: cover; width: 180px; }
+.news-page-grid .news-card h2 { font-size: clamp(1.4rem, 2.4vw, 2.4rem); line-height: 1.05; margin: 10px 0; overflow-wrap: anywhere; }
 .lgpd-content { border-top: 1px solid rgba(255,255,255,.2); margin-top: 100px; max-width: 900px; padding-top: 42px; }
 .lgpd-content h2 { font-size: clamp(1.7rem, 3vw, 3rem); margin: 0 0 20px; }
 .lgpd-content > p { color: rgba(255,255,255,.7); font-size: 1.05rem; line-height: 1.7; max-width: 720px; }
@@ -1272,6 +1274,7 @@ body {
 .admin-button-ghost { color: #fff; border-color: rgba(255,255,255,.45); }
 .admin-card .admin-button-ghost { border-color: var(--brand-deep); color: var(--brand-deep); }
 .admin-panel-head { align-items: end; display: flex; justify-content: space-between; margin-bottom: 54px; }
+.admin-back-link { color: var(--brand-blue); display: inline-block; font-weight: 700; margin-bottom: 26px; text-decoration: none; }
 .admin-panel form { display: grid; gap: 22px; }
 .admin-card h2 { font-size: 1.6rem; margin: 0 0 28px; }
 .admin-grid { display: grid; gap: 24px; }
@@ -1284,6 +1287,8 @@ body {
 .admin-image-list { display: grid; gap: 12px; }
 .admin-image-row { align-items: center; display: grid; gap: 10px; grid-template-columns: 74px 1fr auto; }
 .admin-image-preview { background: var(--brand-mist); border-radius: 3px; height: 54px; object-fit: cover; width: 74px; }
+.admin-attachment-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.admin-attachment img { border-radius: 3px; height: 58px; object-fit: cover; width: 78px; }
 .admin-image-row input[type=file] { grid-column: 1 / -1; font-size: .8rem; }
 .admin-small-button { font-size: .8rem; margin-top: 16px; padding: 9px 12px; }
 .is-hidden { display: none !important; }

@@ -292,6 +292,12 @@ function initCounters() {
 }
 
 const CMS_KEY = "lemospassos-cms-v1";
+const cmsBodyDefaults = [
+  "Em cumprimento à legislação vigente, disponibilizamos o Relatório de Transparência e Igualdade Salarial de Mulheres e Homens, documento que reúne informações sobre a remuneração de profissionais e reforça o compromisso da organização com transparência, equidade e responsabilidade.",
+  "O presidente do Grupo Lemospassos, Ademar Lemos Jr., foi homenageado pelo CRA-BA durante a solenidade do Jubileu de Diamante da Administração, realizada na FIEB no dia 17/09. O encontro reuniu profissionais e autoridades para celebrar os 60 anos da regulamentação da profissão, reforçando a importância da ética, da técnica e da boa gestão para o desenvolvimento da sociedade. A programação seguiu com visitas técnicas dedicadas à história, às conquistas e ao futuro da Administração.",
+  "Ao longo dos anos, aprendemos que a confiança não se conquista de uma vez só. Ela nasce nos gestos diários, nas escolhas que se repetem e na relação que se fortalece a cada etapa. No Dia do Cliente, celebramos essa construção conjunta, feita de histórias que se entrelaçam com a nossa e dão sentido ao caminho que seguimos.",
+  "Um prato colorido não é só bonito: ele mostra a diversidade de nutrientes presentes na refeição. Cada cor tem algo diferente a oferecer ao nosso organismo. Variar frutas, verduras e legumes é uma forma simples de tornar a alimentação mais equilibrada, saborosa e nutritiva.",
+];
 const cmsDefaults = {
   metrics: { meals: 400000, employees: 3500, restaurants: 431 },
   partners: {
@@ -310,7 +316,9 @@ const cmsDefaults = {
 
 function getCmsData() {
   try {
-    return { ...cmsDefaults, ...JSON.parse(localStorage.getItem(CMS_KEY) || "{}") };
+    const data = { ...cmsDefaults, ...JSON.parse(localStorage.getItem(CMS_KEY) || "{}") };
+    data.news = (data.news || []).map((item, index) => ({ ...item, body: item.body || cmsBodyDefaults[index] || item.excerpt || "", attachments: item.attachments || [] }));
+    return data;
   } catch {
     return cmsDefaults;
   }
@@ -336,7 +344,7 @@ function initCmsContent() {
     const news = data.news.filter((item) => item.title && item.image);
     const selected = Number(new URLSearchParams(window.location.search).get("noticia"));
     const feature = document.querySelector("[data-news-feature]");
-    if (feature && news[selected]) feature.innerHTML = `<article class="news-feature"><img src="${news[selected].image}" alt="" /><div><small>Notícia</small><h2>${news[selected].title}</h2><p>${news[selected].excerpt || ""}</p><a class="text-link" href="./noticias.html">Voltar para notícias ↗</a></div></article>`;
+    if (feature && news[selected]) feature.innerHTML = `<article class="news-feature"><img src="${news[selected].image}" alt="" /><div><small>Notícia</small><h2>${news[selected].title}</h2><p class="news-feature-body">${news[selected].body || news[selected].excerpt || ""}</p>${(news[selected].attachments || []).map((attachment) => `<img class="news-attachment" src="${attachment}" alt="Anexo da notícia" />`).join("")}<a class="text-link" href="./noticias.html">Voltar para notícias ↗</a></div></article>`;
     newsPage.innerHTML = news.map((item, index) => newsMarkup(item, index, "h2")).join("");
   }
 }
