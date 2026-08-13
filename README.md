@@ -32,4 +32,4 @@ Depois acesse `http://127.0.0.1:5174`.
 
 O site é estático e não possui etapa de build. Os formulários usam `mailto`, então o envio final depende do cliente de e-mail do usuário.
 
-O painel administrativo desta versão é um protótipo local: usuário `admin`, senha `Lemos2@30!`. Os dados ficam salvos no `localStorage` do navegador e não constituem autenticação segura para produção. Para uso real, será necessário conectar o painel a um backend com autenticação e banco de dados.
+O painel administrativo desta versão é um protótipo local: usuário `admin`, senha `Lemos2@30!`. Os dados ficam salvos no `localStorage` do navegador; imagens escolhidas pelo seletor são convertidas em dados incorporados, para não dependerem da pasta `assets` do computador que fez o upload. Isso ainda não constitui autenticação segura para produção: para uso real, será necessário conectar o painel a um backend com autenticação e banco de dados.

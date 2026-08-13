@@ -295,10 +295,10 @@ const CMS_KEY = "lemospassos-cms-v1";
 const cmsDefaults = {
   metrics: { meals: 400000, employees: 3500, restaurants: 431 },
   partners: {
-    Hospitalar: ["./assets/hospitalar.jpg", "./assets/equipe-lemospassos.jpg"],
-    Restaurantes: ["./assets/populares.jpg", "./assets/20260225_113909.jpg.jpg"],
-    "Área de Segurança": ["./assets/complexos.jpg", "./assets/facilities.jpg"],
-    "Merenda Escolar": ["./assets/educacional.jpg", "./assets/hotelaria.jpg"],
+    Hospitalar: ["https://www.lemospassos.com.br/wp-content/uploads/2019/08/HDT.png", "https://www.lemospassos.com.br/wp-content/uploads/2023/01/RD_DROGASIL.png", "https://www.lemospassos.com.br/wp-content/uploads/2019/06/2.png"],
+    Restaurantes: ["https://www.lemospassos.com.br/wp-content/uploads/2023/01/AMBEV.png", "https://www.lemospassos.com.br/wp-content/uploads/2023/01/CARREFOUR.png", "https://www.lemospassos.com.br/wp-content/uploads/2023/01/IBIRA.png", "https://www.lemospassos.com.br/wp-content/uploads/2023/01/BRISA.png"],
+    "Área de Segurança": ["https://www.lemospassos.com.br/wp-content/uploads/2023/01/ERB.png", "https://www.lemospassos.com.br/wp-content/uploads/2023/01/MOTECH.png", "https://www.lemospassos.com.br/wp-content/uploads/2019/06/9.png", "https://www.lemospassos.com.br/wp-content/uploads/2019/06/11.png"],
+    "Merenda Escolar": ["https://www.lemospassos.com.br/wp-content/uploads/2019/06/12.png", "https://www.lemospassos.com.br/wp-content/uploads/2019/06/13.png", "https://www.lemospassos.com.br/wp-content/uploads/2019/06/14.png", "https://www.lemospassos.com.br/wp-content/uploads/2019/06/34.png", "https://www.lemospassos.com.br/wp-content/uploads/2019/06/16.png", "https://www.lemospassos.com.br/wp-content/uploads/2019/06/17.png"],
   },
   news: [
     { title: "Relatório de Transparência e Igualdade Salarial de Mulheres e Homens", excerpt: "Confira o relatório institucional disponibilizado pelo Grupo LemosPassos.", image: "./assets/contato.jpg", url: "https://www.lemospassos.com.br/relatorio-de-transparencia-e-igualdade-salarial-de-mulheres-e-homens/" },
@@ -324,16 +324,21 @@ function initCmsContent() {
 
   const categoryRoot = document.querySelector("[data-partner-categories]");
   if (categoryRoot) {
-    categoryRoot.innerHTML = `<div class="clients-title-row"><p class="eyebrow group-eyebrow"><span></span> Empresas que caminham conosco</p><span class="cms-hint">Por categoria</span></div><div class="partner-category-grid">${Object.entries(data.partners).map(([category, images]) => `<section class="partner-category"><h4>${category}</h4><div class="partner-window"><div class="partner-track">${images.filter(Boolean).map((image) => `<img src="${image}" alt="Empresa parceira da categoria ${category}" />`).join("")}</div></div></section>`).join("")}</div>`;
+    categoryRoot.innerHTML = `<div class="clients-title-row"><p class="eyebrow group-eyebrow"><span></span> Empresas que caminham conosco</p><span class="cms-hint">Por categoria</span></div><div class="partner-category-grid">${Object.entries(data.partners).map(([category, images]) => `<section class="partner-category"><h4>${category}</h4><div class="partner-window"><div class="partner-track">${images.filter(Boolean).map((image) => `<div class="client-logo"><img src="${image}" alt="Empresa parceira da categoria ${category}" /></div>`).join("")}</div></div></section>`).join("")}</div>`;
   }
 
+  const newsMarkup = (item, index, heading = "h3") => `<a class="news-card" href="./noticias.html?noticia=${index}"><img src="${item.image}" alt="" /><span class="news-card-shade"></span><div><small>Notícia</small><${heading}>${item.title}</${heading}><p>${item.excerpt || ""}</p></div><b>↗</b></a>`;
   const newsRoot = document.querySelector("[data-news-carousel]");
-  if (newsRoot) {
-    newsRoot.innerHTML = data.news.filter((item) => item.title && item.image).map((item) => `<a class="news-card" href="${item.url || "#"}" target="_blank" rel="noopener noreferrer"><img src="${item.image}" alt="" /><span class="news-card-shade"></span><div><small>Notícia</small><h3>${item.title}</h3><p>${item.excerpt || ""}</p></div><b>↗</b></a>`).join("");
-  }
+  if (newsRoot) newsRoot.innerHTML = data.news.filter((item) => item.title && item.image).map((item, index) => newsMarkup(item, index)).join("");
 
   const newsPage = document.querySelector("[data-news-page]");
-  if (newsPage) newsPage.innerHTML = data.news.filter((item) => item.title && item.image).map((item) => `<a class="news-card" href="${item.url || "#"}" target="_blank" rel="noopener noreferrer"><img src="${item.image}" alt="" /><span class="news-card-shade"></span><div><small>Notícia</small><h2>${item.title}</h2><p>${item.excerpt || ""}</p></div><b>↗</b></a>`).join("");
+  if (newsPage) {
+    const news = data.news.filter((item) => item.title && item.image);
+    const selected = Number(new URLSearchParams(window.location.search).get("noticia"));
+    const feature = document.querySelector("[data-news-feature]");
+    if (feature && news[selected]) feature.innerHTML = `<article class="news-feature"><img src="${news[selected].image}" alt="" /><div><small>Notícia</small><h2>${news[selected].title}</h2><p>${news[selected].excerpt || ""}</p><a class="text-link" href="./noticias.html">Voltar para notícias ↗</a></div></article>`;
+    newsPage.innerHTML = news.map((item, index) => newsMarkup(item, index, "h2")).join("");
+  }
 }
 
 function initBrazilMap() {
