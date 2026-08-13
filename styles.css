@@ -97,6 +97,10 @@ body {
   z-index: 2;
 }
 
+.intro-logo-65 {
+  width: clamp(92px, 8.4vw, 148px);
+}
+
 .typewriter {
   color: var(--brand-deep);
   font-size: clamp(2.75rem, 8vw, 9.6rem);
@@ -178,6 +182,10 @@ body {
   opacity: 1;
   top: 50%;
   transform: translate(-50%, -50%) scale(3.35);
+}
+
+.intro.is-zooming .intro-logo-65 {
+  transform: translate(-50%, -50%) scale(2.85);
 }
 
 .intro.is-zooming .type-line {
@@ -321,9 +329,9 @@ body {
 
 .home-hero {
   background:
-    linear-gradient(90deg, rgba(4, 45, 62, 0.91) 0%, rgba(4, 45, 62, 0.68) 38%, rgba(4, 45, 62, 0.16) 74%),
-    linear-gradient(0deg, rgba(4, 45, 62, 0.48), transparent 46%),
-    url("./assets/hero-kitchen.png") center / cover no-repeat;
+    linear-gradient(90deg, rgba(4, 45, 62, 0.92) 0%, rgba(4, 45, 62, 0.62) 38%, rgba(4, 45, 62, 0.08) 75%),
+    linear-gradient(0deg, rgba(4, 45, 62, 0.52), transparent 50%),
+    url("./assets/hero-chef.jpg") center / cover no-repeat;
   min-height: calc(100svh - 78px);
   padding: clamp(150px, 20vh, 230px) clamp(24px, 12vw, 220px) clamp(100px, 13vh, 158px);
   position: relative;
@@ -441,8 +449,10 @@ body {
 
 .home-bottom-bar {
   align-items: center;
-  background: #f4f8f8;
-  color: var(--brand-deep);
+  background:
+    linear-gradient(90deg, rgba(5, 45, 75, 0.94), rgba(5, 45, 75, 0.84)),
+    url("./assets/nosso-sabor-pattern.png") center / cover no-repeat;
+  color: rgba(255, 255, 255, 0.86);
   display: flex;
   font-size: clamp(0.68rem, 0.8vw, 0.82rem);
   font-weight: 700;
@@ -460,7 +470,7 @@ body {
 }
 
 .bottom-mark span {
-  color: var(--brand-deep);
+  color: #fff;
   margin-left: 3px;
 }
 
@@ -471,7 +481,9 @@ body {
 }
 
 .fronts-section {
-  background: #f4f8f8;
+  background:
+    linear-gradient(180deg, rgba(244, 248, 248, 0.9), rgba(244, 248, 248, 0.96)),
+    url("./assets/nosso-sabor-pattern.png") center top / cover no-repeat;
   display: grid;
   gap: clamp(44px, 9vw, 160px);
   grid-template-columns: minmax(240px, 0.7fr) minmax(520px, 1.3fr);
@@ -794,6 +806,10 @@ body {
     width: clamp(66px, 20vw, 92px);
   }
 
+  .intro-logo-65 {
+    width: clamp(92px, 26vw, 132px);
+  }
+
   .typewriter {
     font-size: clamp(2.3rem, 11.8vw, 5rem);
     line-height: 1.04;
@@ -807,6 +823,10 @@ body {
 
   .intro.is-zooming .intro-logo {
     transform: translate(-50%, -50%) scale(2.8);
+  }
+
+  .intro.is-zooming .intro-logo-65 {
+    transform: translate(-50%, -50%) scale(2.35);
   }
 
   .home-header {
@@ -833,7 +853,7 @@ body {
   .home-hero {
     background:
       linear-gradient(180deg, rgba(4, 45, 62, 0.72), rgba(4, 45, 62, 0.78)),
-      url("./assets/hero-kitchen.png") center / cover no-repeat;
+      url("./assets/hero-chef.jpg") center / cover no-repeat;
     min-height: calc(100svh - 64px);
     padding: 150px 24px 110px;
   }
