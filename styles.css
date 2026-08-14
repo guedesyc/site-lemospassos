@@ -978,7 +978,7 @@ body {
 .careers-page {
   background:
     linear-gradient(90deg, rgba(5, 45, 75, 0.8), rgba(5, 45, 75, 0.68) 42%, rgba(5, 45, 75, 0.94) 68%, var(--brand-deep) 100%),
-    url("./assets/gemini-gerated.png") left center / min(68vw, 1200px) auto no-repeat,
+    url("./assets/gemini-gerated.png") left center / 58% 100% no-repeat,
     var(--brand-deep);
   color: #fff;
   min-height: 100svh;
