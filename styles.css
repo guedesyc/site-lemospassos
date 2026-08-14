@@ -928,10 +928,17 @@ body {
 }
 
 .actuation-page {
-  background: #f4f8f8;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(107, 170, 195, 0.18), transparent 28%),
+    linear-gradient(135deg, #f4f8f8 0%, #e8f1f1 52%, #dcecef 100%);
   color: var(--brand-deep);
+  isolation: isolate;
+  overflow: hidden;
   padding: clamp(90px, 12vw, 180px) clamp(24px, 8vw, 148px) clamp(100px, 13vw, 190px);
+  position: relative;
 }
+.actuation-page::before { background: url("./assets/CONCEITO_NOSSO_SABOR2026-08.png") 100% 4% / min(1100px, 76vw) auto no-repeat; content: ""; inset: 0; mix-blend-mode: multiply; opacity: .08; pointer-events: none; position: absolute; z-index: -1; }
+.actuation-page > * { position: relative; z-index: 1; }
 .actuation-heading { align-items: start; display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 8vw, 150px); }
 .actuation-meta { max-width: 350px; }
 .actuation-eyebrow { color: var(--brand-slate); margin: 0; }
@@ -971,7 +978,7 @@ body {
 .careers-page {
   background:
     linear-gradient(90deg, rgba(5, 45, 75, 0.94), rgba(5, 45, 75, 0.74) 48%, rgba(5, 45, 75, 0.36)),
-    url("./assets/equipe-lemospassos.jpg") center / cover no-repeat;
+    url("./assets/gemini-gerated.png") center / cover no-repeat;
   color: #fff;
   min-height: 100svh;
   padding: clamp(80px, 10vw, 150px) clamp(24px, 8vw, 148px);
