@@ -371,6 +371,24 @@ function initBrazilMap() {
     });
 }
 
+function initCareerDisclosure() {
+  const careerForm = document.querySelector("#careerForm");
+  const anchor = document.querySelector("[data-career-form-anchor]");
+  if (!careerForm || !anchor) return;
+
+  const disclosure = document.createElement("details");
+  disclosure.className = "career-disclosure";
+  disclosure.innerHTML = '<summary><span>Envie seu currÃ­culo</span><span aria-hidden="true">+</span></summary><p>Preencha seus dados para preparar o envio do currÃ­culo por e-mail.</p>';
+  disclosure.replaceChildren();
+  const summary = document.createElement("summary");
+  summary.innerHTML = '<span>Envie seu curriculo</span><span aria-hidden="true">+</span>';
+  const description = document.createElement("p");
+  description.textContent = "Preencha seus dados para preparar o envio do curriculo por e-mail.";
+  disclosure.append(summary, description);
+  anchor.append(disclosure);
+  disclosure.append(careerForm);
+}
+
 function initMailForms() {
   const careerForm = document.querySelector("#careerForm");
   const contactForm = document.querySelector("#contactForm");
@@ -420,4 +438,5 @@ initActuationCards();
 initCmsContent();
 initCounters();
 initBrazilMap();
+initCareerDisclosure();
 initMailForms();
