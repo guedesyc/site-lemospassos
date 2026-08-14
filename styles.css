@@ -484,8 +484,6 @@ body {
   background:
     linear-gradient(180deg, rgba(244, 248, 248, 0.9), rgba(244, 248, 248, 0.96)),
     url("./assets/nosso-sabor-pattern.png") center top / cover no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
   display: grid;
   gap: clamp(44px, 9vw, 160px);
   grid-template-columns: minmax(240px, 0.7fr) minmax(520px, 1.3fr);
@@ -939,7 +937,7 @@ body {
   padding: clamp(90px, 12vw, 180px) clamp(24px, 8vw, 148px) clamp(100px, 13vw, 190px);
   position: relative;
 }
-.actuation-page::before { background: url("./assets/CONCEITO_NOSSO_SABOR2026-08.png") center / 100% 100% no-repeat; content: ""; inset: 0; mix-blend-mode: multiply; opacity: .08; pointer-events: none; position: absolute; z-index: -1; }
+.actuation-page::before { background: url("./assets/CONCEITO_NOSSO_SABOR2026-08.png") 100% 4% / min(1100px, 76vw) auto no-repeat; content: ""; inset: 0; mix-blend-mode: multiply; opacity: .08; pointer-events: none; position: absolute; z-index: -1; }
 .actuation-page > * { position: relative; z-index: 1; }
 .actuation-heading { align-items: start; display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 8vw, 150px); }
 .actuation-meta { max-width: 350px; }
@@ -979,8 +977,9 @@ body {
 
 .careers-page {
   background:
-    linear-gradient(90deg, rgba(5, 45, 75, 0.94), rgba(5, 45, 75, 0.74) 48%, rgba(5, 45, 75, 0.36)),
-    url("./assets/gemini-gerated.png") 32% center / 120% auto no-repeat;
+    linear-gradient(90deg, rgba(5, 45, 75, 0.8), rgba(5, 45, 75, 0.68) 42%, rgba(5, 45, 75, 0.94) 68%, var(--brand-deep) 100%),
+    url("./assets/gemini-gerated.png") left center / min(68vw, 1200px) auto no-repeat,
+    var(--brand-deep);
   color: #fff;
   min-height: 100svh;
   padding: clamp(80px, 10vw, 150px) clamp(24px, 8vw, 148px);
@@ -1498,10 +1497,7 @@ body {
     padding: 78px 20px 82px;
   }
 
-  .careers-page {
-    background-position: center;
-    background-size: cover;
-  }
+  .careers-page { background-position: center, center, center; background-size: cover, cover, auto; }
 
   .careers-copy h1,
   .careers-copy h2,

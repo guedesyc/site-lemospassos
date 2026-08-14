@@ -161,8 +161,8 @@ function initFrontsExplorer() {
     trabalhe: {
       label: "Trabalhe Conosco",
       index: "03 / 04",
-      image: "./assets/equipe-lemospassos.jpg",
-      alt: "Equipe diversa reunida em ambiente de trabalho",
+      image: "./assets/gemini-gerated.png",
+      alt: "Profissional do Grupo LemosPassos em uma cozinha",
       href: "trabalhe-conosco.html",
     },
     contatos: {
