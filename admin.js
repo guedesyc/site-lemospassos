@@ -16,6 +16,8 @@ const panel = document.querySelector("[data-admin-panel]");
 const form = document.querySelector("[data-cms-form]");
 const editor = document.querySelector("[data-partner-editor]");
 const newsEditor = document.querySelector("[data-news-editor]");
+document.querySelector("[data-admin-login] img")?.setAttribute("src", "./assets/logo-oficial.png");
+document.querySelector("link[rel='icon']")?.setAttribute("href", "./assets/logo-oficial.png");
 const backLink = document.createElement("a");
 backLink.className = "admin-back-link";
 backLink.href = "./home.html";

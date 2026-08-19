@@ -36,3 +36,4 @@ O painel administrativo desta versão é um protótipo local: usuário `admin`, 
 ## Conteudo administravel
 
 O painel permite editar os indicadores da home, organizar empresas nas categorias Hospitalar, Restaurantes, Area de Seguranca e Merenda Escolar e cadastrar noticias com resumo, corpo completo e anexos de imagem. As noticias abrem dentro do proprio site, em `noticias.html`.
+O mapa principal usa `assets/mapa-lemospassos.png`. A arte anterior com as conexoes internacionais foi preservada em `assets/mapa-internacional.svg` para uso futuro.

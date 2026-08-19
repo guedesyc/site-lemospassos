@@ -349,6 +349,15 @@ function initCmsContent() {
   }
 }
 
+function initOfficialLogos() {
+  document.querySelectorAll('img[src$="lemos-passos.png"]').forEach((logo) => {
+    logo.src = "./assets/logo-oficial.png";
+  });
+  document.querySelectorAll('link[rel="icon"]').forEach((icon) => {
+    icon.href = "./assets/logo-oficial.png";
+  });
+}
+
 function initBrazilMap() {
   const map = document.querySelector("[data-brazil-map]");
   const image = map?.querySelector("img");
@@ -432,6 +441,7 @@ function initMailForms() {
 }
 
 initPageLoader();
+initOfficialLogos();
 initIntro();
 initFrontsExplorer();
 initActuationCards();

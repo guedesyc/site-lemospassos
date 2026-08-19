@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" role="img" aria-label="Brasil conectado ao Panamá e a Portugal">
+  <defs>
+    <linearGradient id="internationalRoute" x1="0" x2="1">
+      <stop offset="0" stop-color="#6baac3" stop-opacity=".35" />
+      <stop offset="1" stop-color="#6baac3" />
+    </linearGradient>
+  </defs>
+  <path fill="none" stroke="url(#internationalRoute)" stroke-dasharray="5 7" stroke-linecap="round" stroke-width="1.6" d="M250 20 C215 54 122 62 82 105" />
+  <path fill="none" stroke="url(#internationalRoute)" stroke-dasharray="5 7" stroke-linecap="round" stroke-width="1.6" d="M250 20 C285 54 378 62 418 105" />
+  <circle fill="#fff" stroke="#052d4b" stroke-width="3" cx="250" cy="20" r="6" />
+  <text fill="rgba(255,255,255,.82)" font-size="12" font-weight="700" letter-spacing=".08em" text-anchor="middle" x="250" y="10">Brasil</text>
+  <g>
+    <path fill="#425d72" stroke="#6baac3" d="M38 92 L48 77 L57 75 L65 62 L76 66 L84 58 L96 63 L105 76 L98 88 L89 91 L82 103 L70 99 L61 108 L49 103 Z" />
+    <path fill="#6baac3" d="M72 99 L80 91 L89 91 L82 103 Z" />
+    <circle fill="#6baac3" stroke="#052d4b" stroke-width="3" cx="78" cy="99" r="4" />
+    <text fill="rgba(255,255,255,.82)" font-size="12" font-weight="700" letter-spacing=".08em" text-anchor="middle" x="78" y="132">América Central</text>
+    <text fill="#6baac3" font-size="12" font-weight="700" text-anchor="middle" x="78" y="148">Panamá</text>
+  </g>
+  <g>
+    <path fill="#425d72" stroke="#6baac3" d="M366 78 L357 67 L363 52 L376 55 L383 42 L399 45 L409 34 L427 39 L437 51 L452 57 L461 71 L453 83 L439 80 L430 91 L414 87 L403 98 L390 91 L378 96 Z" />
+    <path fill="#6baac3" d="M367 78 L357 67 L363 52 L373 56 L374 68 L370 80 Z" />
+    <circle fill="#6baac3" stroke="#052d4b" stroke-width="3" cx="367" cy="72" r="4" />
+    <text fill="rgba(255,255,255,.82)" font-size="12" font-weight="700" letter-spacing=".08em" text-anchor="middle" x="415" y="116">Europa</text>
+    <text fill="#6baac3" font-size="12" font-weight="700" text-anchor="middle" x="367" y="96">Portugal</text>
+  </g>
+</svg>
