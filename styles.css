@@ -98,7 +98,7 @@ body {
 }
 
 .intro-logo-65 {
-  width: clamp(92px, 8.4vw, 148px);
+  width: clamp(128px, 10.8vw, 190px);
 }
 
 .typewriter {
@@ -261,7 +261,7 @@ body {
 .home-brand img {
   display: block;
   height: auto;
-  width: clamp(58px, 5.8vw, 92px);
+  width: clamp(100px, 8.4vw, 140px);
 }
 
 .home-nav {
@@ -807,7 +807,7 @@ body {
   }
 
   .intro-logo-65 {
-    width: clamp(92px, 26vw, 132px);
+    width: clamp(120px, 31vw, 168px);
   }
 
   .typewriter {
